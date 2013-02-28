@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<listener>
+		<display-name>app startup listener</display-name>
+		<listener-class>com.focaplo.sports.pub.listener.WebAppStartUpListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>EchoServlet</servlet-name>
+		<servlet-class>com.focaplo.sports.pub.servlet.EchoServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DownloadScheduleServlet</servlet-name>
+		<servlet-class>com.focaplo.sports.pub.servlet.DownloadScheduleServlet</servlet-class>
+	</servlet>	
+	<servlet>
+		<servlet-name>DownloadScoresFromESPNServlet</servlet-name>
+		<servlet-class>com.focaplo.sports.pub.servlet.DownloadScoresFromESPNServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DownloadScoresFromNBAServlet</servlet-name>
+		<servlet-class>com.focaplo.sports.pub.servlet.DownloadScoresFromNBAServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetScoresInRangeServlet</servlet-name>
+		<servlet-class>com.focaplo.sports.pub.servlet.GetScoresInRangeServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetLastScoreServlet</servlet-name>
+		<servlet-class>com.focaplo.sports.pub.servlet.GetLastScoreServlet</servlet-class>
+	</servlet>			
+	<servlet>
+		<servlet-name>SystemServiceServlet</servlet-name>
+		<servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+		<init-param>
+			<param-name>services</param-name>
+			<param-value/>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EchoServlet</servlet-name>
+		<url-pattern>/pub/echo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadScheduleServlet</servlet-name>
+		<url-pattern>/sys/nba/dailySchedule</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadScoresFromESPNServlet</servlet-name>
+		<url-pattern>/sys/nba/downloadScores/espn</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadScoresFromNBAServlet</servlet-name>
+		<url-pattern>/sys/nba/downloadScores/nba</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetScoresInRangeServlet</servlet-name>
+		<url-pattern>/pub/nba/scores</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetLastScoreServlet</servlet-name>
+		<url-pattern>/pub/nba/latest</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SystemServiceServlet</servlet-name>
+		<url-pattern>/_ah/spi/*</url-pattern>
+	</servlet-mapping>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Protected Area</web-resource-name>
+			<url-pattern>/sys/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint> 
+
+</web-app>

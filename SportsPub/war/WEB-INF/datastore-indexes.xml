@@ -1,0 +1,12 @@
+<datastore-indexes autoGenerate="true">
+	<datastore-index kind="Scores" ancestor="true" source="manual">
+        <property name="timestamp" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="Scores" ancestor="true" source="manual">
+        <property name="timestamp" direction="desc"/>
+    </datastore-index>
+    <datastore-index kind="Scores" ancestor="true" source="manual">
+        <property name="source" direction="asc"/>
+        <property name="timestamp" direction="desc"/>
+    </datastore-index>
+</datastore-indexes>
